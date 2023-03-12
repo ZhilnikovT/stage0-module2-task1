@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.nio.file.Files.readAllLines;
+import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FirstApplicationTest {
@@ -33,7 +34,10 @@ public class FirstApplicationTest {
                 .map(Object::toString)
                 .collect(Collectors.joining("\n"));
 
-        List<String> requiredElements = List.of("System.out.println", "Hello, World!");
+        //List<String> requiredElements = List.of("System.out.println", "Hello, World!");
+        List<String> requiredElements = new ArrayList<>();
+        requiredElements.add("System.out.println");
+        requiredElements.add("Hello, World!");
         requiredElements.forEach(el ->
                 assertTrue(result.contains(el), String.format("'%s' should be used", el))
         );
